@@ -1,20 +1,16 @@
 import "./styles.css";
-import Counter from "./counter";
+import Counter from "./components/counter";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [vote, setVote] = useState(10);
-
-  // const decrementVote = () =>{
-  //   setVote(vote-1);
-  // }
+  const count = useSelector((state) => state.counter.count);
   return (
     <div className="App">
-      <hr />
-      <h1>total:{vote} </h1>
+      <h1>Total votes: {count}</h1>
 
-      <Counter name="fang" vote={vote} addVote={setVote} age={10} />
-      <Counter name="Dave" vote={vote} addVote={setVote} age={60} />
+      <Counter name="fang" />
+      <Counter name="Dave" />
     </div>
   );
 }
